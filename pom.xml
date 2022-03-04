@@ -63,6 +63,7 @@
 	<!-- end::profile[] -->
 
 	<build>
+		<finalName>consumer-soap</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
