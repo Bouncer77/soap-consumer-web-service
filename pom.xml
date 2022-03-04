@@ -5,24 +5,26 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.4</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.6.3</version>
+		<!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
-	<groupId>ru.pczver.spring</groupId>
-	<artifactId>consumerwebservice</artifactId>
+	<groupId>com.example</groupId>
+	<artifactId>consuming-web-service-complete</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>consumerwebservice</name>
-	<description>Demo project with consumer SOAP web service</description>
+	<name>consuming-web-service-complete</name>
+	<description>Demo project for Spring Boot</description>
+
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-
+		<!-- tag::dependency[] -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web-services</artifactId>
@@ -33,7 +35,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- end::dependency[] -->
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<!-- tag::profile[] -->
@@ -55,6 +63,7 @@
 	<!-- end::profile[] -->
 
 	<build>
+		<finalName>consumer-soap</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -62,25 +71,25 @@
 			</plugin>
 			<!-- tag::wsdl[] -->
 			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
-				<version>0.14.0</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<schemaLanguage>WSDL</schemaLanguage>
-					<generatePackage>ru.pczver.consumingwebservice.wsdl</generatePackage>
-					<schemas>
-						<schema>
-							<url>http://localhost:8080/ws/countries.wsdl</url>
-						</schema>
-					</schemas>
-				</configuration>
+					<groupId>org.jvnet.jaxb2.maven2</groupId>
+					<artifactId>maven-jaxb2-plugin</artifactId>
+					<version>0.14.0</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<schemaLanguage>WSDL</schemaLanguage>
+						<generatePackage>ru.pczver.consumingwebservice.wsdl</generatePackage>
+						<schemas>
+							<schema>
+								<url>http://localhost:8080/ws/countries.wsdl</url>
+							</schema>
+						</schemas>
+					</configuration>
 			</plugin>
 			<!-- end::wsdl[] -->
 		</plugins>
